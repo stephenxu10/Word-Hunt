@@ -1,1 +1,91 @@
-/* This file should contain global styles */
+body, button, footer {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #4CAF50; /* Nice green background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .start-page {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures all children elements are centered */
+  }
+  
+  .start-page h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+  }
+  
+  .start-page p {
+    font-size: 1.2em;
+  }
+  
+  .start-page img {
+    margin-top: 20px; /* Space above the image */
+    max-width: 150%; /* Increase max-width to make the image larger */
+    height: auto; /* Maintains the aspect ratio */
+    object-fit: contain; /* Ensures the image is nicely fitted */
+  }
+  
+  #start-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #4CAF50;
+    background-color: white;
+    margin-top: 40px; /* Space above the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  #start-button:hover {
+    background-color: #367C39;
+    color: white;
+  }
+  
+  footer .footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  footer .left,
+  footer .right {
+    flex: 1;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  
+  footer .left {
+    text-align: left;
+  }
+  
+  footer .right {
+    text-align: right;
+  }
+  
+  footer {
+    background-color: #18743d;
+    color: #000;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  

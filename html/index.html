@@ -6,11 +6,26 @@
     <meta name="description" content="A re-creation of the iMessage GamePidgeon Word Hunt game!" />
     <title>Word Hunt</title>
     <link rel="stylesheet" href="../styles/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.6/iconify-icon.min.js"></script>
     <script defer type="module" src="../src/main.ts"></script>
   </head> 
 
+  <template id="start-template"></template>
+
   <body>
-    <h1>Word Hunt</h1>
+    <div class="start-page">
+      <h1>Word Hunt</h1>
+      <p>Connect letters together by dragging your mouse. Make as many words as you can before the time runs out!</p>
+      <img src="./../assets/intro.jpg" alt="Demo Image">
+      <button id="start-button">Start Game</button>
+
+      <footer>
+        <section class="footer-content">
+          <p class="left">&copy; Stephen Xu. All rights reserved.</p>
+          <p class="right">Inspired by GamePidgeon</p>
+        </section>
+      </footer>
+    </div>
   </body>
 </html>
