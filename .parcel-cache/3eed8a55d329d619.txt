@@ -1,9 +1,9 @@
-22125
+22127
 77C:\Users\steph\Word Hunt\node_modules\path-scurry\node_modules\lru-cache\dist133511483053093079 1
 93C:\Users\steph\Word Hunt\node_modules\rxjs\dist\esm5\internal\scheduled\scheduleObservable.js133511483089145782 0
 101C:\Users\steph\Word Hunt\node_modules\typedoc\dist\lib\output\themes\default\partials\navigation.d.ts133511483083496395 0
 82C:\Users\steph\Word Hunt\node_modules\typedoc\dist\lib\serialization\components.js133511483067975372 0
-37C:\Users\steph\Word Hunt\package.json133511472263583849 0
+37C:\Users\steph\Word Hunt\package.json133512280955785053 0
 60C:\Users\steph\Word Hunt\node_modules\dayjs\esm\locale\bg.js133511483066145810 0
 81C:\Users\steph\Word Hunt\node_modules\@babel\highlight\node_modules\chalk\license133511483052676415 0
 79C:\Users\steph\Word Hunt\node_modules\shiki\languages\zenscript.tmLanguage.json133511483085016619 0
@@ -31,7 +31,7 @@
 68C:\Users\steph\Word Hunt\node_modules\prompts\lib\elements\toggle.js133511483072297416 0
 86C:\Users\steph\Word Hunt\node_modules\typedoc\dist\lib\converter\convert-expression.js133511483068489045 0
 90C:\Users\steph\Word Hunt\node_modules\csso\node_modules\css-tree\lib\syntax\node\String.js133511483082419592 0
-36C:\Users\steph\Word Hunt\src\main.ts133511468861359120 0
+36C:\Users\steph\Word Hunt\src\main.ts133512280832154157 0
 63C:\Users\steph\Word Hunt\node_modules\ext\string_\capitalize.js133511483050989021 0
 72C:\Users\steph\Word Hunt\node_modules\event-emitter\benchmark\many-on.js133511483063744440 0
 70C:\Users\steph\Word Hunt\node_modules\nth-check\lib\esm\index.d.ts.map133511483061329572 0
@@ -95,7 +95,7 @@
 56C:\Users\steph\Word Hunt\node_modules\lodash\toString.js133511483092275883 0
 71C:\Users\steph\Word Hunt\node_modules\svgo\plugins\removeUselessDefs.js133511483074728956 0
 66C:\Users\steph\Word Hunt\node_modules\@parcel\events\src\errors.js133511483055894023 0
-29C:\Users\steph\Word Hunt\dist133511576369643441 1
+29C:\Users\steph\Word Hunt\dist133512291247848229 1
 61C:\Users\steph\Word Hunt\node_modules\lodash\wrapperLodash.js133511483092841428 0
 65C:\Users\steph\Word Hunt\node_modules\svgo\plugins\removeAttrs.js133511483072419192 0
 73C:\Users\steph\Word Hunt\node_modules\rxjs\dist\types\internal\observable133511483103408637 1
@@ -113,7 +113,7 @@
 80C:\Users\steph\Word Hunt\node_modules\ts-jest\dist\presets\create-jest-preset.js133511483059346026 0
 67C:\Users\steph\Word Hunt\node_modules\call-bind\.github\FUNDING.yml133511483060345930 0
 65C:\Users\steph\Word Hunt\node_modules\rimraf\dist\esm\platform.js133511483062730459 0
-37C:\Users\steph\Word Hunt\node_modules133511483116453817 1
+37C:\Users\steph\Word Hunt\node_modules133512280827740217 1
 56C:\Users\steph\Word Hunt\node_modules\lodash\uniqueId.js133511483092507181 0
 51C:\Users\steph\Word Hunt\node_modules\string-length133511483053452215 1
 56C:\Users\steph\Word Hunt\node_modules\shiki\package.json133511483082052153 0
@@ -221,7 +221,7 @@
 58C:\Users\steph\Word Hunt\node_modules\marked\src\marked.js133511483060711923 0
 38C:\Users\steph\Word Hunt\tsconfig.json133511464408307250 0
 57C:\Users\steph\Word Hunt\node_modules\is-core-module\test133511483053954310 1
-42C:\Users\steph\Word Hunt\styles\styles.css133511575415396715 0
+42C:\Users\steph\Word Hunt\styles\styles.css133512290879842612 0
 52C:\Users\steph\Word Hunt\node_modules\is-core-module133511483058354605 1
 113C:\Users\steph\Word Hunt\node_modules\typedoc\dist\lib\output\themes\default\partials\member.signature.title.d.ts133511483083384575 0
 77C:\Users\steph\Word Hunt\node_modules\exit\test\fixtures\10-stdout-stderr.txt133511483062118673 0
@@ -232,7 +232,12 @@
 68C:\Users\steph\Word Hunt\node_modules\ts-jest\dist\utils\ts-error.js133511483070543157 0
 92C:\Users\steph\Word Hunt\node_modules\jsdom\lib\jsdom\living\nodes\HTMLIFrameElement-impl.js133511483081510500 0
 60C:\Users\steph\Word Hunt\node_modules\dayjs\esm\locale\ar.js133511483064275488 0
-36C:\Users\steph\Word Hunt\src\slog.ts133511468745427105 0
+36C:\Users\steph\Word Hunt\src\slog.ts133512280832566008 0
+83C:\Users\steph\Word Hunt\node_modules\@pkgjs\parseargs\examples\ordered-options.mjs133511483062700275 0
+78C:\Users\steph\Word Hunt\node_modules\json-schema-to-typescript\.eslintrc.json133511483070287540 0
+59C:\Users\steph\Word Hunt\node_modules\marked\src\Slugger.js133511483063843975 0
+46C:\Users\steph\Word Hunt\node_modules\asynckit133511483058384730 1
+44C:\Users\steph\Word Hunt\node_modules\.cache133512280827740217 1
 60C:\Users\steph\Word Hunt\node_modules\lodash\fp\defaultTo.js133511483085788129 0
 69C:\Users\steph\Word Hunt\node_modules\vscode-textmate\release\main.js133511483050267612 0
 86C:\Users\steph\Word Hunt\node_modules\@parcel\runtime-js\src\helpers\node\js-loader.js133511483066177516 0
@@ -500,17 +505,6 @@
 96C:\Users\steph\Word Hunt\node_modules\@babel\types\lib\modifications\appendToMemberExpression.js133511483079021733 0
 78C:\Users\steph\Word Hunt\node_modules\shiki\themes\material-theme-lighter.json133511483080722379 0
 48C:\Users\steph\Word Hunt\node_modules\acorn-walk133511483054413278 1
-65C:\Users\steph\Word Hunt\node_modules\@types\lodash\isRegExp.d.ts133511483079011750 0
-65C:\Users\steph\Word Hunt\node_modules\svgo\plugins\_transforms.js133511483067862180 0
-51C:\Users\steph\Word Hunt\node_modules\yauzl\LICENSE133511483051198190 0
-87C:\Users\steph\Word Hunt\node_modules\rxjs\dist\esm\internal\operators\switchAll.js.map133511483097415395 0
-77C:\Users\steph\Word Hunt\node_modules\csso\lib\restructure\6-restructBlock.js133511483070297459 0
-78C:\Users\steph\Word Hunt\node_modules\utility-types\dist\functional-helpers.js133511483050843711 0
-83C:\Users\steph\Word Hunt\node_modules\jsdom\lib\jsdom\living\nodes\Document-impl.js133511483073099890 0
-48C:\Users\steph\Word Hunt\node_modules\.bin\acorn133511483104374271 0
-83C:\Users\steph\Word Hunt\node_modules\rxjs\src\internal\operators\mergeInternals.ts133511483100866496 0
-51C:\Users\steph\Word Hunt\node_modules\at-least-node133511483051895049 1
-57C:\Users\steph\Word Hunt\node_modules\timers-ext\delay.js133511483053805234 0
 68C:\Users\steph\Word Hunt\node_modules\@swc\helpers\cjs\_ts_param.cjs133511483074824295 0
 43C:\Users\steph\Word Hunt\node_modules\async133511483079092949 1
 81C:\Users\steph\Word Hunt\node_modules\rimraf\dist\commonjs\ignore-enoent.d.ts.map133511483070109547 0
@@ -631,10 +625,17 @@
 43C:\Users\steph\Word Hunt\node_modules\clone133511483055160308 1
 88C:\Users\steph\Word Hunt\node_modules\shiki\dist\languages\vyper.tmLanguage-e575ccf0.mjs133511483089882135 0
 46C:\Users\steph\Word Hunt\node_modules\argparse133511483054942417 1
-83C:\Users\steph\Word Hunt\node_modules\@pkgjs\parseargs\examples\ordered-options.mjs133511483062700275 0
-78C:\Users\steph\Word Hunt\node_modules\json-schema-to-typescript\.eslintrc.json133511483070287540 0
-59C:\Users\steph\Word Hunt\node_modules\marked\src\Slugger.js133511483063843975 0
-46C:\Users\steph\Word Hunt\node_modules\asynckit133511483058384730 1
+65C:\Users\steph\Word Hunt\node_modules\@types\lodash\isRegExp.d.ts133511483079011750 0
+65C:\Users\steph\Word Hunt\node_modules\svgo\plugins\_transforms.js133511483067862180 0
+51C:\Users\steph\Word Hunt\node_modules\yauzl\LICENSE133511483051198190 0
+87C:\Users\steph\Word Hunt\node_modules\rxjs\dist\esm\internal\operators\switchAll.js.map133511483097415395 0
+77C:\Users\steph\Word Hunt\node_modules\csso\lib\restructure\6-restructBlock.js133511483070297459 0
+78C:\Users\steph\Word Hunt\node_modules\utility-types\dist\functional-helpers.js133511483050843711 0
+83C:\Users\steph\Word Hunt\node_modules\jsdom\lib\jsdom\living\nodes\Document-impl.js133511483073099890 0
+48C:\Users\steph\Word Hunt\node_modules\.bin\acorn133511483104374271 0
+83C:\Users\steph\Word Hunt\node_modules\rxjs\src\internal\operators\mergeInternals.ts133511483100866496 0
+51C:\Users\steph\Word Hunt\node_modules\at-least-node133511483051895049 1
+57C:\Users\steph\Word Hunt\node_modules\timers-ext\delay.js133511483053805234 0
 47C:\Users\steph\Word Hunt\node_modules\aws-sign2133511483051895049 1
 89C:\Users\steph\Word Hunt\node_modules\rimraf\node_modules\minimatch\dist\mjs\package.json133511483062627050 0
 64C:\Users\steph\Word Hunt\node_modules\uri-js\dist\esnext\schemes133511483070235002 1
@@ -1934,7 +1935,7 @@
 82C:\Users\steph\Word Hunt\node_modules\rxjs\src\internal\scheduler\AsapScheduler.ts133511483098780761 0
 88C:\Users\steph\Word Hunt\node_modules\rxjs\dist\esm\internal\operators\defaultIfEmpty.js133511483081126216 0
 73C:\Users\steph\Word Hunt\node_modules\cypress\types\lodash\fp\remove.d.ts133511483090698037 0
-47C:\Users\steph\Word Hunt\dist\index.b7a05eb9.js133511576369593428 0
+47C:\Users\steph\Word Hunt\dist\index.b7a05eb9.js133512281114045146 0
 72C:\Users\steph\Word Hunt\node_modules\jest-watcher\build\lib\colorize.js133511483051257804 0
 119C:\Users\steph\Word Hunt\node_modules\@parcel\optimizer-svgo\node_modules\css-tree\lib\definition-syntax\SyntaxError.js133511483078124288 0
 73C:\Users\steph\Word Hunt\node_modules\cypress\types\lodash\isWeakMap.d.ts133511483084708210 0
@@ -3452,9 +3453,9 @@
 71C:\Users\steph\Word Hunt\node_modules\typedoc\dist\lib\utils\general.js133511483072951742 0
 61C:\Users\steph\Word Hunt\node_modules\ajv\dist\refs\data.json133511483078296716 0
 85C:\Users\steph\Word Hunt\node_modules\typedoc\dist\lib\converter\comments\parser.d.ts133511483083677077 0
+73C:\Users\steph\Word Hunt\node_modules\typescript\ThirdPartyNoticeText.txt133511483088468002 0
 69C:\Users\steph\Word Hunt\node_modules\vscode-textmate\release\grammar133511483068088034 1
 89C:\Users\steph\Word Hunt\node_modules\rxjs\dist\types\internal\util\errorContext.d.ts.map133511483093683392 0
-73C:\Users\steph\Word Hunt\node_modules\typescript\ThirdPartyNoticeText.txt133511483088468002 0
 73C:\Users\steph\Word Hunt\node_modules\vscode-textmate\release\main.js.map133511483058476587 0
 77C:\Users\steph\Word Hunt\node_modules\rxjs\src\internal\operators\mergeMap.ts133511483100916065 0
 69C:\Users\steph\Word Hunt\node_modules\update-browserslist-db\utils.js133511483053787486 0
@@ -6653,7 +6654,7 @@
 60C:\Users\steph\Word Hunt\node_modules\shiki\samples\d.sample133511483090423492 0
 86C:\Users\steph\Word Hunt\node_modules\htmlparser2\node_modules\entities\lib\index.d.ts133511483065836521 0
 72C:\Users\steph\Word Hunt\node_modules\rxjs\src\internal\operators\max.ts133511483100744658 0
-52C:\Users\steph\Word Hunt\dist\index.0243a6ab.css.map133511576369613446 0
+52C:\Users\steph\Word Hunt\dist\index.0243a6ab.css.map133512287839408980 0
 71C:\Users\steph\Word Hunt\node_modules\rimraf\dist\commonjs\opt-arg.d.ts133511483077230301 0
 63C:\Users\steph\Word Hunt\node_modules\shiki\samples\diff.sample133511483090486453 0
 56C:\Users\steph\Word Hunt\node_modules\lodash\fp\isNaN.js133511483088887079 0
@@ -7357,9 +7358,9 @@
 88C:\Users\steph\Word Hunt\node_modules\shiki\dist\languages\marko.tmLanguage-f7cdd412.mjs133511483088032811 0
 51C:\Users\steph\Word Hunt\node_modules\kleur\license133511483052207440 0
 70C:\Users\steph\Word Hunt\node_modules\entities\lib\esm\encode.d.ts.map133511483069016651 0
+92C:\Users\steph\Word Hunt\node_modules\rxjs\dist\esm5\internal\operators\combineLatest.js.map133511483092903236 0
 89C:\Users\steph\Word Hunt\node_modules\shiki\dist\languages\matlab.tmLanguage-bbd592ac.mjs133511483088173000 0
 70C:\Users\steph\Word Hunt\node_modules\rxjs\src\internal\ajax\errors.ts133511483099726670 0
-92C:\Users\steph\Word Hunt\node_modules\rxjs\dist\esm5\internal\operators\combineLatest.js.map133511483092903236 0
 65C:\Users\steph\Word Hunt\node_modules\@parcel\events\lib\index.js133511483056632896 0
 86C:\Users\steph\Word Hunt\node_modules\shiki\dist\languages\mdx.tmLanguage-0e09f242.mjs133511483088223005 0
 89C:\Users\steph\Word Hunt\node_modules\css-select\node_modules\domhandler\lib\esm\index.js133511483049886855 0
@@ -11831,7 +11832,7 @@
 64C:\Users\steph\Word Hunt\node_modules\msgpackr-extract\README.md133511483056377118 0
 72C:\Users\steph\Word Hunt\node_modules\msgpackr-extract\node_modules\.bin133511483104404253 1
 50C:\Users\steph\Word Hunt\node_modules\arch\LICENSE133511483047710235 0
-40C:\Users\steph\Word Hunt\dist\index.html133511576369583421 0
+40C:\Users\steph\Word Hunt\dist\index.html133512291247818472 0
 107C:\Users\steph\Word Hunt\node_modules\msgpackr-extract\node_modules\node-gyp-build-optional-packages\bin.js133511483049246523 0
 67C:\Users\steph\Word Hunt\node_modules\es5-ext\array\of\implement.js133511483076131593 0
 73C:\Users\steph\Word Hunt\node_modules\@babel\traverse\lib\visitors.js.map133511483072583888 0
@@ -17803,7 +17804,7 @@
 96C:\Users\steph\Word Hunt\node_modules\common-tags\lib\oneLineCommaListsOr\oneLineCommaListsOr.js133511483075353194 0
 79C:\Users\steph\Word Hunt\node_modules\caniuse-lite\data\features\sql-storage.js133511483090309944 0
 67C:\Users\steph\Word Hunt\node_modules\collect-v8-coverage\README.md133511483054042468 0
-48C:\Users\steph\Word Hunt\dist\intro.9ef47f46.jpg133511576369583421 0
+48C:\Users\steph\Word Hunt\dist\intro.9ef47f46.jpg133511576654752981 0
 83C:\Users\steph\Word Hunt\node_modules\common-tags\lib\oneLineCommaListsAnd\index.js133511483071301658 0
 98C:\Users\steph\Word Hunt\node_modules\common-tags\lib\oneLineCommaListsAnd\oneLineCommaListsAnd.js133511483075143719 0
 69C:\Users\steph\Word Hunt\node_modules\caniuse-lite\data\regions\MM.js133511483088362738 0
@@ -19596,7 +19597,7 @@
 88C:\Users\steph\Word Hunt\node_modules\@swc\helpers\cjs\_define_enumerable_properties.cjs133511483068796972 0
 64C:\Users\steph\Word Hunt\node_modules\@types\graceful-fs\LICENSE133511483047909841 0
 60C:\Users\steph\Word Hunt\node_modules\@types\glob\index.d.ts133511483050676777 0
-48C:\Users\steph\Word Hunt\dist\index.0243a6ab.css133511576369593428 0
+48C:\Users\steph\Word Hunt\dist\index.0243a6ab.css133512287839353623 0
 59C:\Users\steph\Word Hunt\node_modules\@types\glob\README.md133511483049109922 0
 73C:\Users\steph\Word Hunt\node_modules\@types\babel__traverse\package.json133511483054434425 0
 70C:\Users\steph\Word Hunt\node_modules\@types\babel__template\README.md133511483049119925 0
@@ -22061,6 +22062,7 @@
 53C:\Users\steph\Word Hunt\node_modules\.bin\sshpk-sign133511483104394255 0
 86C:\Users\steph\Word Hunt\node_modules\@ampproject\remapping\dist\types\source-map.d.ts133511483060524321 0
 81C:\Users\steph\Word Hunt\node_modules\@ampproject\remapping\dist\types\types.d.ts133511483060978566 0
+53C:\Users\steph\Word Hunt\node_modules\.cache\prettier133512280827740217 1
 59C:\Users\steph\Word Hunt\node_modules\.bin\browserslist.cmd133511483104374271 0
 58C:\Users\steph\Word Hunt\node_modules\.bin\create-jest.cmd133511483104374271 0
 58C:\Users\steph\Word Hunt\node_modules\.bin\detect-libc.cmd133511483104384257 0
@@ -22122,5 +22124,5 @@
 69C:\Users\steph\Word Hunt\node_modules\.bin\update-browserslist-db.cmd133511483104404253 0
 69C:\Users\steph\Word Hunt\node_modules\.bin\update-browserslist-db.ps1133511483104404253 0
 51C:\Users\steph\Word Hunt\node_modules\.bin\uuid.ps1133511483104415016 0
-40C:\Users\steph\Word Hunt\html\index.html133511574508989739 0
-51C:\Users\steph\Word Hunt\dist\index.b7a05eb9.js.map133511576369633432 0
+40C:\Users\steph\Word Hunt\html\index.html133512291179608888 0
+51C:\Users\steph\Word Hunt\dist\index.b7a05eb9.js.map133512281114064993 0
