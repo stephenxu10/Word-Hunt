@@ -17,9 +17,139 @@
     <script defer type="module" src="../src/main.ts"></script>
   </head>
 
-  <template id="start-template"></template>
+  <template id="start-template">
+    <style>
+      .start-page {
+        text-align: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Ensures all children elements are centered */
+      }
 
-  <body>
+      .start-page h1 {
+        font-size: 3em;
+        margin-bottom: 0.5em;
+      }
+
+      .start-page p {
+        font-size: 1.2em;
+      }
+
+      .start-page img {
+        margin-top: 20px; /* Space above the image */
+        max-width: 150%; /* Increase max-width to make the image larger */
+        height: auto; /* Maintains the aspect ratio */
+        object-fit: contain; /* Ensures the image is nicely fitted */
+      }
+
+      #start-button {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        color: #4caf50;
+        background-color: white;
+        margin-top: 40px; /* Space above the button */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+
+      #start-button:hover {
+        background-color: #367c39;
+        color: white;
+      }
+
+      footer .footer-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      footer .left,
+      footer .right {
+        flex: 1;
+        padding: 0 10px;
+        box-sizing: border-box;
+      }
+
+      footer .left {
+        text-align: left;
+      }
+
+      footer .right {
+        text-align: right;
+      }
+
+      footer {
+        background-color: #18743d;
+        color: #000;
+        padding: 10px 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .settings-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      .settings-icon:hover {
+        color: #007bff;
+        transition: color 0.3s ease;
+      }
+
+      .settings-dialog {
+        position: absolute;
+        top: 80px;
+        right: 40px;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        z-index: 1000;
+      }
+
+      .settings-content label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .settings-content input {
+        width: 50%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .settings-content button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .settings-content button:hover {
+        background-color: #0056b3;
+      }
+    </style>
     <div class="settings-icon">
       <iconify-icon
         class="settings-icon"
@@ -30,7 +160,7 @@
     </div>
 
     <!-- Settings Dialog -->
-    <div class="settings-dialog" id="settings-dialog">
+    <dialog class="settings-dialog" id="settings-dialog">
       <div class="settings-content">
         <label for="board-size">Board Size:</label>
         <input
@@ -39,6 +169,7 @@
           name="board-size"
           min="3"
           max="6"
+          value="4"
         />
         <label for="time-limit">Time Limit (min):</label>
         <input
@@ -47,10 +178,11 @@
           name="time-limit"
           min="1"
           max="30"
+          value="5"
         />
         <button id="save-settings">Save</button>
       </div>
-    </div>
+    </dialog>
 
     <div class="start-page">
       <h1>Word Hunt</h1>
@@ -68,5 +200,9 @@
         </section>
       </footer>
     </div>
+  </template>
+
+  <body>
+    <start-page> </start-page>
   </body>
 </html>
