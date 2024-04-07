@@ -1,11 +1,10 @@
 import { slog } from "./slog";
-import { WordModel } from "./model/WordModel";
-import { StartPage } from "./view/StartView";
+import { StartController } from "./controller/StartController";
 
 function main(): void {
   slog.info("Welcome to the game!");
-  const startPage = new StartPage();
-  const wordModel = new WordModel();
+  const startController = new StartController();
+  startController.listenAndServe()
 }
 
 /* Register event handler to run after the page is fully loaded. */

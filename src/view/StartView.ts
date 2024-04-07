@@ -1,6 +1,12 @@
-import { Settings } from "./../types";
+import { Settings, DictionaryInfo } from "./../types";
 
-export class StartPage extends HTMLElement {
+declare global {
+  interface DocumentEventMap {
+    "dictionary-change": CustomEvent<DictionaryInfo>;
+  }
+}
+
+class StartPage extends HTMLElement {
   private controller: AbortController | null = null;
   public _settings: Settings | null = {
     size: 4,
@@ -10,6 +16,7 @@ export class StartPage extends HTMLElement {
   public _settingsDialog: HTMLDialogElement | null = null;
   public _settingsIcon: HTMLElement | null = null;
   public _saveOptions: HTMLButtonElement | null = null;
+  public _dictionaryFile: HTMLInputElement | null = null;
 
   constructor() {
     super();
@@ -26,6 +33,7 @@ export class StartPage extends HTMLElement {
         this._settingsDialog =
           this.shadowRoot.querySelector("#settings-dialog");
         this._saveOptions = this.shadowRoot.querySelector("#save-settings");
+        this._dictionaryFile = this.shadowRoot.querySelector("#dictionary-file")
       }
     } else {
       throw new Error("shadowRoot does not exist");
@@ -53,6 +61,8 @@ export class StartPage extends HTMLElement {
       this.handleSaveSettings.bind(this),
       options,
     );
+
+    this._dictionaryFile?.addEventListener('change', this.handleDictionaryChange.bind(this), options)
   }
 
   disconnectedCallback() {
@@ -90,6 +100,31 @@ export class StartPage extends HTMLElement {
       }
     }
   }
+
+  handleDictionaryChange(event: Event) {
+    event.preventDefault()
+    const input = event.target as HTMLInputElement
+    const file = input.files ? input.files[0] : null
+
+    if (file) {
+      const dictionaryEvent = new CustomEvent("dictionary-change", {
+        detail: { file: file },
+      });
+      document.dispatchEvent(dictionaryEvent)
+      console.log("DICTIONARY EVENT DISPATCHED")
+    } 
+  }
 }
 
 customElements.define("start-page", StartPage);
+
+export class StartView {
+  private _startPage: StartPage | null = null;
+
+  constructor() {
+    this._startPage = document.querySelector("start-page")
+    if (!(this._startPage instanceof StartPage)) {
+      console.log("no start page found");
+    }
+  }
+}
