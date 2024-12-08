@@ -4,7 +4,7 @@ export type Settings = {
 };
 
 export type DictionaryInfo = {
-  file: File;
+  words: Set<string>;
 };
 
 export type GameStartEvent = {

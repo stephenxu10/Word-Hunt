@@ -9,7 +9,7 @@
     "check": "tsc",
     "doc": "typedoc --entryPointStrategy expand src/ types/",
     "format": "prettier --write html/ src/ styles/ tests/",
-    "start": "parcel public/*.html",
+    "start": "parcel public/*.html --port 1234",
     "test": "jest"
   },
   "author": "Stephen Xu",

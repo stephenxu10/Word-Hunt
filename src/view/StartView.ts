@@ -1,22 +1,20 @@
 import { Settings, DictionaryInfo, GameStartEvent } from "./../types";
-import fs from 'fs/promises'
 
 declare global {
   interface DocumentEventMap {
-    "dictionary-change": CustomEvent<DictionaryInfo>;
+    "dictionary-loaded": CustomEvent<DictionaryInfo>;
     "game-start": CustomEvent<GameStartEvent>;
   }
 }
 
-
 async function loadDictionary() : Promise<string>{
   try {
-    const response = await fetch("/assets/words_alpha.txt") as Response
+    const response = await fetch("http://localhost:3000/assets/words_alpha.txt") as Response
     if (!response.ok) {
       throw new Error(`Failed to load dictionary: ${response.statusText}`)
     }
     const dictionaryContent = await response.text();
-    console.log("DICTIONARY SUCCESFFULY LOADED")
+    console.log("DICTIONARY SUCCESFFULY LOADED.")
     return dictionaryContent;
 
   } catch (error) {
@@ -35,7 +33,6 @@ class StartPage extends HTMLElement {
   public _settingsDialog: HTMLDialogElement | null = null;
   public _settingsIcon: HTMLElement | null = null;
   public _saveOptions: HTMLButtonElement | null = null;
-  public _dictionaryFile: HTMLInputElement | null = null;
 
   constructor() {
     super();
@@ -53,7 +50,6 @@ class StartPage extends HTMLElement {
         this._settingsDialog =
           this.shadowRoot.querySelector("#settings-dialog");
         this._saveOptions = this.shadowRoot.querySelector("#save-settings");
-        this._dictionaryFile = this.shadowRoot.querySelector("#dictionary-file")
       }
     } else {
       throw new Error("shadowRoot does not exist");
@@ -62,8 +58,14 @@ class StartPage extends HTMLElement {
 
   async loadDictionary() {
     const dictionaryContent = await loadDictionary();
-    console.log(dictionaryContent);
+    const words = dictionaryContent.split("\n").map(word => word.trim());
+
+    const dictionaryEvent = new CustomEvent("dictionary-loaded", {
+      detail: { words: words },
+    });
+    document.dispatchEvent(dictionaryEvent)
   }
+
   connectedCallback() {
     this.controller = new AbortController();
     const options = { signal: this.controller.signal };
@@ -80,11 +82,6 @@ class StartPage extends HTMLElement {
       options,
     );
 
-    this._dictionaryFile?.addEventListener('change', 
-      this.handleDictionaryChange.bind(this), 
-      options,
-    );
-    
     // Handle the pressing of the start game button.
     this._startButton?.addEventListener(
       'click', 
@@ -125,20 +122,6 @@ class StartPage extends HTMLElement {
         console.error("Invalid settings provided");
       }
     }
-  }
-
-  handleDictionaryChange(event: Event) {
-    event.preventDefault()
-    const input = event.target as HTMLInputElement
-    const file = input.files ? input.files[0] : null
-
-    if (file) {
-      const dictionaryEvent = new CustomEvent("dictionary-change", {
-        detail: { file: file },
-      });
-      document.dispatchEvent(dictionaryEvent)
-      console.log("DICTIONARY EVENT DISPATCHED")
-    } 
   }
 
   handleStartGame(event: Event) {

@@ -16,12 +16,12 @@ export class StartController {
 
   listenAndServe() {
     document.addEventListener(
-      "dictionary-change",
+      "dictionary-loaded",
       (evt: CustomEvent<DictionaryInfo>) => {
-        const inputFile = evt.detail.file;
+        const words = evt.detail.words;
 
-        if (inputFile) {
-          this._model.loadDictionaryFromFile(inputFile);
+        if (words) {
+          this._model.loadDictionaryFromWords(words);
         }
       },
     );

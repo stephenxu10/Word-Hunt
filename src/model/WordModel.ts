@@ -7,6 +7,12 @@ export class WordModel {
     this._wordTrie = new WordTrie();
   }
 
+  loadDictionaryFromWords(words: Set<string>) {
+    words.forEach((word) => {
+      this._wordTrie.insert(word);
+    })
+  }
+
   loadDictionaryFromFile(file: File) {
     const reader = new FileReader();
 

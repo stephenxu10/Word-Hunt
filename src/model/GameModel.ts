@@ -11,10 +11,10 @@ const directions = [
 ];
 
 export class GameModel {
-    private _remainingTime : number;
-    private _board: string[][] | null;
-    private _trie: WordTrie;
-    private _boardSize: number; // Assume that the board is a square.
+    public _remainingTime : number;
+    public _board: string[][] | null;
+    public _trie: WordTrie;
+    public _boardSize: number; // Assume that the board is a square.
 
     constructor(board: string[][] | null, startingTime: number, trie: WordTrie, boardSize: number) {
         this._remainingTime = startingTime;

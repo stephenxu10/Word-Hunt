@@ -12,6 +12,13 @@ This will automatically install all of the tools and dependencies that are neede
 ## Usage
 To start the game locally, run:
 
-```npm start```
+```bash
+npm start
+```
+
+Also, in a separate terminal, run
+```bash
+serve -s public --cors
+```
 
 This will start a local server and open the game in your default web browser. Enjoy playing and finding words!
