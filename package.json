@@ -5,11 +5,11 @@
   "browserslist": "defaults",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "parcel build html/*.html",
+    "build": "parcel build public/*.html",
     "check": "tsc",
     "doc": "typedoc --entryPointStrategy expand src/ types/",
     "format": "prettier --write html/ src/ styles/ tests/",
-    "start": "parcel html/*.html",
+    "start": "parcel public/*.html",
     "test": "jest"
   },
   "author": "Stephen Xu",

@@ -4,5 +4,9 @@ export type Settings = {
 };
 
 export type DictionaryInfo = {
-  file: File
+  file: File;
+};
+
+export type GameStartEvent = {
+  settings: Settings;
 }

@@ -8,7 +8,7 @@
       content="A re-creation of the iMessage GamePidgeon Word Hunt game!"
     />
     <title>Word Hunt</title>
-    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../public/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
@@ -178,7 +178,7 @@
           name="time-limit"
           min="1"
           max="30"
-          value="5"
+          value="3"
         />
         <button id="save-settings">Save</button>
       </div>
@@ -190,9 +190,14 @@
         Connect letters together by dragging your mouse. Make as many words as
         you can before the time runs out!
       </p>
-      <img src="./../assets/intro.jpg" alt="Demo Image" />
+      <img src="./assets/intro.jpg" alt="Demo Image" />
       <button id="start-button">Start Game</button>
-      <input type="file" id="dictionary-file" accept=".txt" style="margin: 20px 0;">
+      <input
+        type="file"
+        id="dictionary-file"
+        accept=".txt"
+        style="margin: 20px 0"
+      />
       <footer>
         <section class="footer-content">
           <p class="left">&copy; Stephen Xu. All rights reserved.</p>
@@ -202,7 +207,54 @@
     </div>
   </template>
 
+<template id="game-template">
+  <style>
+    .game-page {
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #18743d; /* For example, a greenish background */
+      height: 100vh;
+      box-sizing: border-box;
+      padding-top: 50px;
+    }
+
+    .timer-container {
+      font-size: 2em;
+      margin-bottom: 20px;
+      background: rgba(0,0,0,0.3);
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .game-board {
+      width: 80%;
+      height: 70%;
+      background-color: #fff;
+      color: #000;
+      border-radius: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  <div class="game-page">
+    <div class="timer-container">
+      Time Remaining: <span id="time-remaining">3:00</span>
+    </div>
+    <div class="game-board">
+      <!-- Placeholder for the game board -->
+      <p>Your game board will go here.</p>
+    </div>
+  </div>
+</template>
+
   <body>
-    <start-page> </start-page>
+    <div id="app">
+      <start-page> </start-page>
+    </div>
   </body>
 </html>

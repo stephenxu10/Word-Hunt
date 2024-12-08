@@ -9,10 +9,10 @@ export class WordModel {
 
   loadDictionaryFromFile(file: File) {
     const reader = new FileReader();
-  
+
     reader.onload = (event: ProgressEvent<FileReader>) => {
       const text = event.target?.result as string | null;
-  
+
       if (text) {
         const words = text.split("\n");
         words.forEach((word) => {
@@ -23,12 +23,11 @@ export class WordModel {
         console.error("No text found in file.");
       }
     };
-  
+
     reader.onerror = (event) => {
       console.error("Error reading the dictionary file:", event.target?.error);
     };
-  
-    reader.readAsText(file);
 
+    reader.readAsText(file);
   }
 }

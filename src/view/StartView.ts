@@ -1,8 +1,9 @@
-import { Settings, DictionaryInfo } from "./../types";
+import { Settings, DictionaryInfo, GameStartEvent } from "./../types";
 
 declare global {
   interface DocumentEventMap {
     "dictionary-change": CustomEvent<DictionaryInfo>;
+    "game-start": CustomEvent<GameStartEvent>;
   }
 }
 
@@ -44,12 +45,6 @@ class StartPage extends HTMLElement {
     this.controller = new AbortController();
     const options = { signal: this.controller.signal };
 
-    this._startButton?.addEventListener(
-      "click",
-      this.handleStart.bind(this),
-      options,
-    );
-
     this._settingsIcon?.addEventListener(
       "click",
       this.handleShowSettingsDialog.bind(this),
@@ -62,15 +57,23 @@ class StartPage extends HTMLElement {
       options,
     );
 
-    this._dictionaryFile?.addEventListener('change', this.handleDictionaryChange.bind(this), options)
+    this._dictionaryFile?.addEventListener('change', 
+      this.handleDictionaryChange.bind(this), 
+      options,
+    );
+    
+    // Handle the pressing of the start game button.
+    this._startButton?.addEventListener(
+      'click', 
+      this.handleStartGame.bind(this),
+      options,
+    );
   }
 
   disconnectedCallback() {
     this.controller?.abort();
     this.controller = null;
   }
-
-  handleStart(event: MouseEvent) {}
 
   handleShowSettingsDialog() {
     this._settingsDialog?.showModal();
@@ -113,6 +116,16 @@ class StartPage extends HTMLElement {
       document.dispatchEvent(dictionaryEvent)
       console.log("DICTIONARY EVENT DISPATCHED")
     } 
+  }
+
+  handleStartGame(event: Event) {
+    const startGameEvent = new CustomEvent("game-start", {
+      detail: { settings: this._settings }, composed: true, bubbles: true
+    });
+
+    document.dispatchEvent(startGameEvent)
+    const settings = (event as CustomEvent).detail.settings;
+    console.log("Game Start Event Received!", settings);
   }
 }
 
