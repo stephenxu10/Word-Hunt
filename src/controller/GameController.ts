@@ -18,6 +18,14 @@ export class GameController {
         this._gameView = view;
     }
 
+    initializeGame() {
+        /*
+        Initiates the game by generating the board and starting the timer.
+        */
+       this.startTimer()
+       this._gameView!.renderBoard(this._gameModel!._board);
+    }
+
     startTimer() {
         if (this.intervalId != null) {
             clearInterval(this.intervalId);

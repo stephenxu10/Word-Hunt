@@ -201,50 +201,96 @@
     </div>
   </template>
 
-<template id="game-template">
-  <style>
-    .game-page {
-      text-align: center;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #18743d; /* For example, a greenish background */
-      height: 100vh;
-      box-sizing: border-box;
-      padding-top: 50px;
-    }
-
-    .timer-container {
-      font-size: 2em;
-      margin-bottom: 20px;
-      background: rgba(0,0,0,0.3);
-      padding: 10px 20px;
-      border-radius: 5px;
-    }
-
-    .game-board {
-      width: 80%;
-      height: 70%;
-      background-color: #fff;
-      color: #000;
-      border-radius: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
-
-  <div class="game-page">
-    <div class="timer-container">
-      Time Remaining: <span id="time-remaining">3:00</span>
+  <template id="game-template">
+    <style>
+      .game-page {
+        text-align: center;
+        color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box;
+        padding-top: 30px;
+        font-family: 'Poppins', sans-serif;
+      }
+  
+      /* Timer container */
+      .timer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5em;
+        color: #ffdd57; 
+        margin-bottom: 20px;
+        padding: 15px 30px;
+        border-radius: 30px;
+        background: linear-gradient(145deg, #282847, #1c1c2d); 
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(255, 255, 255, 0.1);
+      }
+  
+      .timer-container span {
+        animation: pulse 2s infinite; 
+      }
+  
+      /* Game board container */
+      #game-board {
+        display: grid;
+        gap: 10px; 
+        width: 500px; 
+        height: 500px; 
+        margin: auto;
+        border: 3px solid #4caf50; 
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+      }
+  
+      /* Game board cells */
+      .cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #252546; 
+        border: 1px solid #3e3e5c; 
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #e0e0e0; 
+        text-transform: uppercase;
+        user-select: none;
+        border-radius: 8px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), -2px -2px 4px rgba(255, 255, 255, 0.05);
+        transition: transform 0.2s, background-color 0.2s; 
+      }
+  
+      .cell:hover {
+        background-color: #ff5722; 
+        transform: scale(1.1); 
+      }
+  
+      /* Pulse animation for the timer */
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+    </style>
+  
+    <div class="game-page">
+      <div class="timer-container">
+        <span id="time-remaining">3:00</span>
+      </div>
+  
+      <!-- Game board -->
+      <div id="game-board">
+        <!-- Cells will be dynamically added here -->
+      </div>
     </div>
-    <div class="game-board">
-      <!-- Placeholder for the game board -->
-      <p>Your game board will go here.</p>
-    </div>
-  </div>
-</template>
+  </template>
+  
 
   <body>
     <div id="app">

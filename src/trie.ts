@@ -12,7 +12,7 @@ export default class WordTrie {
     let i = 0;
 
     while (i < word.length) {
-      let char = word[i];
+      let char = word[i].toUpperCase();
       if (!node.children.has(char)) {
         node.children.set(char, new WordTrie());
       }

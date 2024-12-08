@@ -8,6 +8,9 @@ export class WordModel {
   }
 
   loadDictionaryFromWords(words: Set<string>) {
+    // Filter to only include words at least three characters long
+    words = new Set(Array.from(words).filter(word => word.length >= 3))
+
     words.forEach((word) => {
       this._wordTrie.insert(word);
     })

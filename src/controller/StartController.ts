@@ -12,6 +12,8 @@ export class StartController {
   constructor() {
     this._model = new WordModel();
     this._view = new StartView();
+
+    console.log(this._view)
   }
 
   listenAndServe() {
@@ -29,7 +31,6 @@ export class StartController {
     document.addEventListener(
       "game-start",
       (evt: CustomEvent<GameStartEvent>) => {
-          console.log("YO OVER HERE!")
           const settings = evt.detail.settings
 
           // start the game with the specified settings!
@@ -38,12 +39,12 @@ export class StartController {
             const boardSize = settings.size
 
             const gameView = new GameView(selectedTimeInMinutes, boardSize);
-
-            // TODO: Randomly generate the board here instead of keeping this as null.
-            const gameModel = new GameModel(null, selectedTimeInMinutes * 60, this._model._wordTrie, boardSize)
+            const gameModel = new GameModel(selectedTimeInMinutes * 60, this._model._wordTrie, boardSize)
+            console.log(gameModel._board)
+            console.log(gameModel.solve())
 
             const gameController = new GameController(gameModel, gameView);
-            gameController.startTimer()
+            gameController.initializeGame()
           }
       }
     )

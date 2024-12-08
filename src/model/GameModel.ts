@@ -10,17 +10,41 @@ const directions = [
     [1, -1],  [1, 0],  [1, 1]
 ];
 
+// Weights assigned to each letter for randomly generating the board. Prioritizes the most frequent letters.
+const letterWeights: { [key: string]: number } = {
+    A: 8, B: 2, C: 3, D: 4, E: 8, F: 2, G: 2, H: 6, I: 7, J: 1,
+    K: 1, L: 4, M: 2, N: 7, O: 8, P: 2, Q: 1, R: 6, S: 6, T: 9,
+    U: 3, V: 1, W: 2, X: 1, Y: 2, Z: 1
+  };
+
+const letters = Object.keys(letterWeights);
+const totalWeight = letters.reduce((sum, letter) => sum + letterWeights[letter], 0);
+
+function getRandomLetter(): string {
+    let random = Math.random() * totalWeight;
+
+    for (const letter of letters) {
+        random -= letterWeights[letter];
+
+        if (random <= 0) {
+            return letter
+        }
+    }
+
+    return "E";
+}
+
 export class GameModel {
     public _remainingTime : number;
-    public _board: string[][] | null;
+    public _board: string[][] = [];
     public _trie: WordTrie;
     public _boardSize: number; // Assume that the board is a square.
 
-    constructor(board: string[][] | null, startingTime: number, trie: WordTrie, boardSize: number) {
+    constructor(startingTime: number, trie: WordTrie, boardSize: number) {
         this._remainingTime = startingTime;
-        this._board = board;
         this._trie = trie;
         this._boardSize = boardSize;
+        this._board = this.generateBoard(boardSize)
     }
 
     decrementTime() {
@@ -35,6 +59,15 @@ export class GameModel {
 
     setTime(newTime: number) {
         this._remainingTime = newTime;
+    }
+
+    generateBoard(boardSize: number): string[][] {
+        // Randomly generates the board in accordance to letter weights.
+        const board = Array.from({ length: boardSize }, () =>
+            Array.from({ length: boardSize }, () => getRandomLetter())
+          );
+
+        return board;
     }
 
     solve(): Set<string> {
