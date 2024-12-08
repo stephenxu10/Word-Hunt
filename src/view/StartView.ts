@@ -1,9 +1,27 @@
 import { Settings, DictionaryInfo, GameStartEvent } from "./../types";
+import fs from 'fs/promises'
 
 declare global {
   interface DocumentEventMap {
     "dictionary-change": CustomEvent<DictionaryInfo>;
     "game-start": CustomEvent<GameStartEvent>;
+  }
+}
+
+
+async function loadDictionary() : Promise<string>{
+  try {
+    const response = await fetch("/assets/words_alpha.txt") as Response
+    if (!response.ok) {
+      throw new Error(`Failed to load dictionary: ${response.statusText}`)
+    }
+    const dictionaryContent = await response.text();
+    console.log("DICTIONARY SUCCESFFULY LOADED")
+    return dictionaryContent;
+
+  } catch (error) {
+    console.error("Error loading dictionary:", error);
+    return "";
   }
 }
 
@@ -22,6 +40,7 @@ class StartPage extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.loadDictionary();
 
     if (this.shadowRoot) {
       let template = document.querySelector("#start-template");
@@ -41,6 +60,10 @@ class StartPage extends HTMLElement {
     }
   }
 
+  async loadDictionary() {
+    const dictionaryContent = await loadDictionary();
+    console.log(dictionaryContent);
+  }
   connectedCallback() {
     this.controller = new AbortController();
     const options = { signal: this.controller.signal };
