@@ -8,7 +8,7 @@
     "build": "parcel build public/*.html",
     "check": "tsc",
     "doc": "typedoc --entryPointStrategy expand src/ types/",
-    "format": "prettier --write html/ src/ styles/ tests/",
+    "format": "prettier --write public/ src/",
     "serve-static": "serve -s public --cors",
     "parcel-dev": "parcel public/*.html --port 1234",
     "start": "npm-run-all --parallel serve-static parcel-dev",

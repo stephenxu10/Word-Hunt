@@ -9,4 +9,4 @@ export type DictionaryInfo = {
 
 export type GameStartEvent = {
   settings: Settings;
-}
+};

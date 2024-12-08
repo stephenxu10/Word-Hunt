@@ -9,44 +9,44 @@ import { GameModel } from "../model/GameModel";
 import { GameView } from "../view/GameView";
 
 export class GameController {
-    private _gameModel : GameModel | null = null;
-    private _gameView: GameView | null = null;
-    private intervalId: number | null = null;
+  private _gameModel: GameModel | null = null;
+  private _gameView: GameView | null = null;
+  private intervalId: number | null = null;
 
-    constructor(model: GameModel, view: GameView) {
-        this._gameModel = model;
-        this._gameView = view;
-    }
+  constructor(model: GameModel, view: GameView) {
+    this._gameModel = model;
+    this._gameView = view;
+  }
 
-    initializeGame() {
-        /*
+  initializeGame() {
+    /*
         Initiates the game by generating the board and starting the timer.
         */
-       this.startTimer()
-       this._gameView!.renderBoard(this._gameModel!._board);
+    this.startTimer();
+    this._gameView!.renderBoard(this._gameModel!._board);
+  }
+
+  startTimer() {
+    if (this.intervalId != null) {
+      clearInterval(this.intervalId);
     }
 
-    startTimer() {
-        if (this.intervalId != null) {
-            clearInterval(this.intervalId);
-        }
+    this.intervalId = window.setInterval(() => {
+      this._gameModel!.decrementTime();
+      this._gameView!._gamePage!.updateTimeDisplay(this._gameModel!.getTime());
 
-        this.intervalId = window.setInterval(() => {
-            this._gameModel!.decrementTime();
-            this._gameView!._gamePage!.updateTimeDisplay(this._gameModel!.getTime())
+      if (this._gameModel!.getTime() <= 0) {
+        this.stopTimer();
 
-            if (this._gameModel!.getTime() <= 0) {
-                this.stopTimer();
+        // Handle game ending logic and what not
+      }
+    }, 1000);
+  }
 
-                // Handle game ending logic and what not
-            }
-        }, 1000)
+  stopTimer() {
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
     }
-
-    stopTimer() {
-        if (this.intervalId !== null) {
-            clearInterval(this.intervalId);
-            this.intervalId = null;
-        } 
-    }
+  }
 }

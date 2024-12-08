@@ -7,16 +7,17 @@ declare global {
   }
 }
 
-async function loadDictionary() : Promise<string>{
+async function loadDictionary(): Promise<string> {
   try {
-    const response = await fetch("http://localhost:3000/assets/words_alpha.txt") as Response
+    const response = (await fetch(
+      "http://localhost:3000/assets/words_alpha.txt",
+    )) as Response;
     if (!response.ok) {
-      throw new Error(`Failed to load dictionary: ${response.statusText}`)
+      throw new Error(`Failed to load dictionary: ${response.statusText}`);
     }
     const dictionaryContent = await response.text();
-    console.log("DICTIONARY SUCCESFFULY LOADED.")
+    console.log("DICTIONARY SUCCESFFULY LOADED.");
     return dictionaryContent;
-
   } catch (error) {
     console.error("Error loading dictionary:", error);
     return "";
@@ -58,12 +59,12 @@ class StartPage extends HTMLElement {
 
   async loadDictionary() {
     const dictionaryContent = await loadDictionary();
-    const words = dictionaryContent.split("\n").map(word => word.trim());
+    const words = dictionaryContent.split("\n").map((word) => word.trim());
 
     const dictionaryEvent = new CustomEvent("dictionary-loaded", {
       detail: { words: words },
     });
-    document.dispatchEvent(dictionaryEvent)
+    document.dispatchEvent(dictionaryEvent);
   }
 
   connectedCallback() {
@@ -84,7 +85,7 @@ class StartPage extends HTMLElement {
 
     // Handle the pressing of the start game button.
     this._startButton?.addEventListener(
-      'click', 
+      "click",
       this.handleStartGame.bind(this),
       options,
     );
@@ -126,10 +127,12 @@ class StartPage extends HTMLElement {
 
   handleStartGame(event: Event) {
     const startGameEvent = new CustomEvent("game-start", {
-      detail: { settings: this._settings }, composed: true, bubbles: true
+      detail: { settings: this._settings },
+      composed: true,
+      bubbles: true,
     });
 
-    document.dispatchEvent(startGameEvent)
+    document.dispatchEvent(startGameEvent);
     const settings = (event as CustomEvent).detail.settings;
     console.log("Game Start Event Received!", settings);
   }
@@ -141,7 +144,7 @@ export class StartView {
   private _startPage: StartPage | null = null;
 
   constructor() {
-    this._startPage = document.querySelector("start-page")
+    this._startPage = document.querySelector("start-page");
     if (!(this._startPage instanceof StartPage)) {
       console.log("no start page found");
     }

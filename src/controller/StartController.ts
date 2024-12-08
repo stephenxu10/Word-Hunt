@@ -1,6 +1,6 @@
 import { StartView } from "../view/StartView";
 import { WordModel } from "../model/WordModel";
-import { DictionaryInfo, GameStartEvent} from "../types";
+import { DictionaryInfo, GameStartEvent } from "../types";
 import { GameView } from "../view/GameView";
 import { GameModel } from "../model/GameModel";
 import { GameController } from "../controller/GameController";
@@ -13,7 +13,7 @@ export class StartController {
     this._model = new WordModel();
     this._view = new StartView();
 
-    console.log(this._view)
+    console.log(this._view);
   }
 
   listenAndServe() {
@@ -31,23 +31,26 @@ export class StartController {
     document.addEventListener(
       "game-start",
       (evt: CustomEvent<GameStartEvent>) => {
-          const settings = evt.detail.settings
+        const settings = evt.detail.settings;
 
-          // start the game with the specified settings!
-          if (settings) {
-            const selectedTimeInMinutes = settings.time
-            const boardSize = settings.size
+        // start the game with the specified settings!
+        if (settings) {
+          const selectedTimeInMinutes = settings.time;
+          const boardSize = settings.size;
 
-            const gameView = new GameView(selectedTimeInMinutes, boardSize);
-            const gameModel = new GameModel(selectedTimeInMinutes * 60, this._model._wordTrie, boardSize)
-            console.log(gameModel._board)
-            console.log(gameModel.solve())
+          const gameView = new GameView(selectedTimeInMinutes, boardSize);
+          const gameModel = new GameModel(
+            selectedTimeInMinutes * 60,
+            this._model._wordTrie,
+            boardSize,
+          );
+          console.log(gameModel._board);
+          console.log(gameModel.solve());
 
-            const gameController = new GameController(gameModel, gameView);
-            gameController.initializeGame()
-          }
-      }
-    )
-
+          const gameController = new GameController(gameModel, gameView);
+          gameController.initializeGame();
+        }
+      },
+    );
   }
 }
