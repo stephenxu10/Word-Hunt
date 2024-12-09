@@ -3,6 +3,7 @@ The game model focuses on keeping track of the game state, including time remain
 etc.
 */
 import WordTrie from "../trie";
+import { CellPosition } from "../types";
 
 const directions = [
   [-1, -1],
@@ -99,6 +100,20 @@ export class GameModel {
     );
 
     return board;
+  }
+
+  scorePath(cellPath: CellPosition[]): number {
+    if (cellPath.length == 0) {
+      return 0;
+    }
+
+    const word = cellPath.map(pos => this._board[pos.row][pos.col]).join("");
+    
+    if (this._trie.search(word)) {
+      return 400 * (cellPath.length - 2);
+    } else {
+      return 0;
+    }
   }
 
   solve(): Set<string> {

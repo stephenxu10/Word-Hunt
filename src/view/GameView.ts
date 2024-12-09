@@ -1,6 +1,9 @@
 class GamePage extends HTMLElement {
   private controller: AbortController | null = null;
-  private _timeDisplay: HTMLElement | null = null;
+  public _timeDisplay: HTMLElement | null = null;
+  public _scoreBox: HTMLElement | null = null;
+  public _wordsTab: HTMLElement | null = null;
+  public _gameBoard: HTMLElement | null = null;
 
   constructor() {
     super();
@@ -17,6 +20,15 @@ class GamePage extends HTMLElement {
 
         // The game timer
         this._timeDisplay = this.shadowRoot.querySelector("#time-remaining");
+
+        // The score box
+        this._scoreBox = this.shadowRoot.querySelector("#score")
+
+        // The words tab
+        this._wordsTab = this.shadowRoot.querySelector("#found-words")
+
+        // The game board
+        this._gameBoard = this.shadowRoot.querySelector("#game-board");
       }
     }
   }
@@ -69,9 +81,49 @@ export class GameView {
     }
   }
 
+  getBoardElement() : HTMLElement {
+      return this._gamePage!._gameBoard!
+  }
+
+  updateScore(newScore: number) {
+    if (this._gamePage?._scoreBox) {
+      this._gamePage._scoreBox.innerHTML = newScore.toString();
+    }
+  }
+
+  getCurrentScore() : number {
+    if (this._gamePage?._scoreBox) {
+      return parseInt(this._gamePage._scoreBox.textContent!)
+    } else {
+      return 0;
+    }
+  }
+
+  addFoundWord(word: string) {
+    if (this._gamePage?._wordsTab) {
+      const wordElement = document.createElement("span");
+      wordElement.classList.add("word");
+      wordElement.textContent = word;
+
+      this._gamePage?._wordsTab.appendChild(wordElement);
+    }
+  }
+
+  highlightCell(row: number, col: number) {
+    const cell = this.getBoardElement().querySelector(`[data-row='${row}'][data-col='${col}']`);
+
+    if (cell) {
+      cell.classList.add("highlighted");
+    }
+  }
+
+  clearTemporaryHighlights() {
+    const highlightedCells = this.getBoardElement().querySelectorAll(".highlighted");
+    highlightedCells.forEach(cell => cell.classList.remove("highlighted"));
+  }
+
   renderBoard(board: string[][]) {
-    const boardElement =
-      this._gamePage!.shadowRoot!.getElementById("game-board");
+    const boardElement = this.getBoardElement();
 
     if (boardElement) {
       // Clear any previous board content
