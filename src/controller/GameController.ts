@@ -49,22 +49,22 @@ export class GameController {
   completeSelection() {
     // Inspect the traversed path.
     const pathScore = this._gameModel?.scorePath(this._currentPath)!;
+    const wordFromPath = this._currentPath
+      .map((pos) => this._gameModel?._board[pos.row][pos.col])
+      .join("");
 
-    if (pathScore > 0) {
+    const notFound = !this._foundWords.includes(wordFromPath);
+
+    if (pathScore > 0 && notFound) {
       this._gameView?.updateScore(this._gameView.getCurrentScore() + pathScore);
-      const wordFromPath = this._currentPath
-        .map((pos) => this._gameModel?._board[pos.row][pos.col])
-        .join("");
-
-      if (!this._foundWords.includes(wordFromPath)) {
-        this._gameView?.addFoundWord(wordFromPath);
-        this._foundWords.push(wordFromPath);
-      }
+      this._gameView?.addFoundWord(wordFromPath);
+      this._foundWords.push(wordFromPath);
     }
 
-    // clear the current path and highlighted cells
+    // clear the current path, highlighted cells, and drawn arrows
     this._currentPath = [];
     this._gameView?.clearTemporaryHighlights();
+    this._gameView?.clearArrows();
   }
 
   handleMouseDown(event: MouseEvent) {
@@ -75,7 +75,7 @@ export class GameController {
       const position = getCellCoordinates(cell);
       this._currentPath = [position];
 
-      this._gameView?.highlightCell(position.row, position.col);
+      this._gameView?.highlightCell(position.row, position.col, "highlighted");
     }
   }
 
@@ -95,8 +95,52 @@ export class GameController {
       );
 
       if (!alreadyInPath) {
+        const lastPosition = this._currentPath[this._currentPath.length - 1];
         this._currentPath.push(cellPosition);
-        this._gameView?.highlightCell(cellPosition.row, cellPosition.col);
+        const currWord = this._currentPath
+          .map((pos) => this._gameModel!._board[pos.row][pos.col])
+          .join("");
+        this._gameView?.highlightCell(
+          cellPosition.row,
+          cellPosition.col,
+          "highlighted",
+        );
+
+        // Draw an arrow from last position to current position
+        this._gameView?.drawArrow(lastPosition, cellPosition);
+
+        // Check if the currently highlighted path forms a new valid word. If so, highlight
+        // the cells green to reflect this.
+        if (
+          this._gameModel!.scorePath(this._currentPath) > 0 &&
+          !this._foundWords.includes(currWord)
+        ) {
+          this._currentPath.forEach((cell) => {
+            this._gameView?.highlightCell(
+              cell.row,
+              cell.col,
+              "highlighted-green",
+            );
+          });
+        }
+
+        // Found a previously found word - highlight the path orange to reflect this
+        else if (this._gameModel!.scorePath(this._currentPath) > 0) {
+          this._currentPath.forEach((cell) => {
+            this._gameView?.highlightCell(
+              cell.row,
+              cell.col,
+              "highlighted-orange",
+            );
+          });
+        }
+
+        // Otherwise, the word in the current path is not an actual word
+        else {
+          this._currentPath.forEach((cell) => {
+            this._gameView?.highlightCell(cell.row, cell.col, "highlighted");
+          });
+        }
       }
     }
   }

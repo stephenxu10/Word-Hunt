@@ -1,3 +1,5 @@
+import { CellPosition } from "../types";
+
 class GamePage extends HTMLElement {
   private controller: AbortController | null = null;
   public _timeDisplay: HTMLElement | null = null;
@@ -109,22 +111,96 @@ export class GameView {
     }
   }
 
-  highlightCell(row: number, col: number) {
+  highlightCell(row: number, col: number, className: string) {
     const cell = this.getBoardElement().querySelector(
       `[data-row='${row}'][data-col='${col}']`,
     );
 
     if (cell) {
-      cell.classList.add("highlighted");
+      cell.classList.remove(
+        "highlighted",
+        "highlighted-green",
+        "highlighted-orange",
+      );
+      cell.classList.add(className);
     }
   }
 
   clearTemporaryHighlights() {
-    const highlightedCells =
-      this.getBoardElement().querySelectorAll(".highlighted");
-    highlightedCells.forEach((cell) => cell.classList.remove("highlighted"));
+    const highlightedCells = this.getBoardElement().querySelectorAll(
+      ".highlighted, .highlighted-green, .highlighted-orange",
+    );
+
+    highlightedCells.forEach((cell) => {
+      cell.classList.remove(
+        "highlighted",
+        "highlighted-green",
+        "highlighted-orange",
+      );
+    });
   }
 
+  drawArrow(from: CellPosition, to: CellPosition) {
+    const boardElement = this.getBoardElement();
+    const svg = boardElement.querySelector("svg") || this.createArrowLayer(boardElement);
+  
+    const fromCell = boardElement.querySelector(
+      `[data-row='${from.row}'][data-col='${from.col}']`
+    ) as HTMLElement;
+  
+    const toCell = boardElement.querySelector(
+      `[data-row='${to.row}'][data-col='${to.col}']`
+    ) as HTMLElement;
+  
+    if (fromCell && toCell) {
+      const fromRect = fromCell.getBoundingClientRect();
+      const toRect = toCell.getBoundingClientRect();
+  
+      const fromX = fromRect.left + fromRect.width / 2;
+      const fromY = fromRect.top + fromRect.height / 2;
+  
+      const toX = toRect.left + toRect.width / 2;
+      const toY = toRect.top + toRect.height / 2;
+  
+      // Create the arrow line
+      const arrow = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      arrow.setAttribute("x1", fromX.toString());
+      arrow.setAttribute("y1", fromY.toString());
+      arrow.setAttribute("x2", toX.toString());
+      arrow.setAttribute("y2", toY.toString());
+      arrow.setAttribute("stroke", "rgba(50, 150, 250, 0.8)"); // Soft blue line
+      arrow.setAttribute("stroke-width", "3"); // Slightly thicker line
+  
+      // Optional: Add a glow effect
+      arrow.style.filter = "drop-shadow(0px 0px 4px rgba(50, 150, 250, 0.8))";
+  
+      svg.appendChild(arrow);
+    }
+  }
+  
+  createArrowLayer(boardElement: HTMLElement): SVGSVGElement {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.style.position = "absolute";
+    svg.style.top = "0";
+    svg.style.left = "0";
+    svg.style.width = "100%";
+    svg.style.height = "100%";
+    svg.style.pointerEvents = "none"; // Ensure the SVG doesn't block interactions
+  
+    // No marker definition needed since we don't want arrowheads
+    boardElement.appendChild(svg);
+    return svg;
+  } 
+  
+  
+  clearArrows() {
+    const boardElement = this.getBoardElement();
+    const svg = boardElement.querySelector("svg");
+    if (svg) {
+      svg.innerHTML = ""; // Clear all arrows
+    }
+  }
+  
   renderBoard(board: string[][]) {
     const boardElement = this.getBoardElement();
 

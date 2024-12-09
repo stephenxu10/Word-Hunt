@@ -21,7 +21,7 @@
       body {
         margin: 0;
         padding: 0;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         /* Add a subtle animated gradient background */
         background: linear-gradient(120deg, #1e1e2f, #18743d);
         background-size: 200% 200%;
@@ -31,8 +31,12 @@
       }
 
       @keyframes gradientFlow {
-        0% { background-position: 0% 50%; }
-        100% { background-position: 100% 50%; }
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
       }
 
       /* Style the entire page footer to match the vibe */
@@ -336,10 +340,32 @@
       }
 
       .cell.highlighted {
-        background-color: #ffcc00;
-        border: 2px solid #ffa500;
-        color: #ffffff;
-        box-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
+        background-color: #ffe600; /* Brighter yellow background */
+        border: 2px solid #ffd700; /* Golden yellow border */
+        color: #ffffff; /* White text for contrast */
+        box-shadow: 0 0 10px rgba(255, 230, 0, 0.9); /* Brighter yellow glow */
+        transform: scale(1.1);
+        transition:
+          background-color 0.3s ease,
+          transform 0.2s ease;
+      }
+
+      .cell.highlighted-green {
+        background-color: #32cd32; /* Lime green background */
+        border: 2px solid #228b22; /* Forest green border */
+        color: #ffffff; /* White text for contrast */
+        box-shadow: 0 0 10px rgba(50, 205, 50, 0.8); /* Green glow */
+        transform: scale(1.1);
+        transition:
+          background-color 0.3s ease,
+          transform 0.2s ease;
+      }
+
+      .cell.highlighted-orange {
+        background-color: #ffa500; /* Orange background */
+        border: 2px solid #ff8c00; /* Darker orange border */
+        color: #ffffff; /* White text for contrast */
+        box-shadow: 0 0 10px rgba(255, 165, 0, 0.8); /* Orange glow */
         transform: scale(1.1);
         transition:
           background-color 0.3s ease,
@@ -348,14 +374,16 @@
 
       /* Found Words Tab */
       .words-tab {
+        flex-direction: column;
+        display: flex;
         width: 200px;
         height: 95%;
+        max-height: 650px;
         background-color: #2c2f3f; /* Distinct gray-blue background */
         padding: 15px;
         border-radius: 12px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         margin-left: 150px; /* Add spacing from the game board */
-        overflow-y: auto; /* Allow scrolling if words exceed the height */
       }
 
       .words-tab h3 {
@@ -363,8 +391,16 @@
         color: #ffdd57; /* Matches the timer and score text */
         margin-bottom: 10px;
         text-align: center;
+        flex-shrink: 0;
       }
 
+      #found-words {
+        overflow-y: auto; /* Make the word list scrollable */
+        max-height: 600px;
+        flex-grow: 1; /* Allow the list to take up the remaining space */
+        background-color: transparent; /* Inherit the background color */
+        padding-right: 5px; /* Optional: add padding for the scrollbar */
+      }
       .word {
         font-size: 1em;
         color: #ffffff;
@@ -380,22 +416,22 @@
       }
 
       /* Scrollbar Styling */
-      .words-tab::-webkit-scrollbar {
+      #found-words::-webkit-scrollbar {
         width: 10px; /* Adjust scrollbar width */
       }
 
-      .words-tab::-webkit-scrollbar-track {
+      #found-words::-webkit-scrollbar-track {
         background: #2c2f3f; /* Match panel background for seamless blend */
         border-radius: 10px;
       }
 
-      .words-tab::-webkit-scrollbar-thumb {
+      #found-words::-webkit-scrollbar-thumb {
         background-color: #3e4258; /* Subtle darker tone for the thumb */
         border-radius: 10px;
         border: 2px solid #2c2f3f; /* Adds spacing and blends with the track */
       }
 
-      .words-tab::-webkit-scrollbar-thumb:hover {
+      #found-words::-webkit-scrollbar-thumb:hover {
         background-color: #5b5e72; /* Slightly brighter on hover for interactivity */
       }
 
@@ -482,14 +518,14 @@
         align-items: center;
         justify-content: center;
         height: 100vh;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Poppins", sans-serif;
         color: #f0f0f0;
         text-align: center;
         padding: 40px;
         box-sizing: border-box;
         gap: 30px; /* Add vertical spacing between sections */
       }
-  
+
       /* Score Section */
       .score-container {
         font-size: 2.5em; /* Slightly larger text */
@@ -497,7 +533,7 @@
         color: #ffdd57;
         margin-bottom: 40px; /* Increased margin for spacing */
       }
-  
+
       /* Words Panels Container */
       .words-panels {
         display: flex;
@@ -506,7 +542,7 @@
         width: 120%; /* Slightly wider panels */
         max-width: 1000px; /* Allow for more spacing on larger screens */
       }
-  
+
       .panel {
         display: flex;
         flex-direction: column; /* Stack heading and content vertically */
@@ -517,7 +553,7 @@
         flex: 1;
         max-height: 350px; /* Limit height for content */
       }
-  
+
       .panel h3 {
         font-size: 1.4em; /* Larger heading text */
         color: #ffdd57;
@@ -525,18 +561,18 @@
         text-transform: uppercase;
         flex-shrink: 0; /* Prevent heading from shrinking */
       }
-  
+
       .scrollable-content {
         overflow-y: auto; /* Enable scrolling for the list */
         flex-grow: 1; /* Allow the list to expand and fill the panel */
       }
-  
+
       .scrollable-content ul {
         list-style: none;
         padding: 0;
         margin: 0;
       }
-  
+
       .scrollable-content li {
         font-size: 1.1em; /* Slightly larger text */
         margin: 8px 0; /* More spacing between items */
@@ -545,26 +581,26 @@
         background-color: #3a3d4f; /* Slightly darker background for items */
         text-align: left;
       }
-  
+
       .scrollable-content li:nth-child(even) {
         background-color: #454860; /* Alternate row coloring */
       }
-  
+
       /* Scrollbar Styling */
       .scrollable-content::-webkit-scrollbar {
         width: 8px;
       }
-  
+
       .scrollable-content::-webkit-scrollbar-track {
         background: #2c2f3f; /* Matches panel background */
       }
-  
+
       .scrollable-content::-webkit-scrollbar-thumb {
         background-color: #3a3d4f; /* Matches list item background */
         border-radius: 10px;
         border: 2px solid #2c2f3f; /* Blends with panel */
       }
-  
+
       /* Play Again Button */
       .play-again-button {
         padding: 15px 30px; /* Larger button for better clickability */
@@ -576,15 +612,17 @@
         border-radius: 8px;
         margin-bottom: 20px;
         cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
+        transition:
+          background-color 0.3s ease,
+          transform 0.2s ease;
         margin-top: 20px; /* Add spacing above button */
       }
-  
+
       .play-again-button:hover {
         background-color: #ffaa00;
         transform: scale(1.1);
       }
-  
+
       footer .footer-content {
         width: 100%;
         display: flex;
@@ -592,22 +630,22 @@
         align-items: center;
         padding: 10px 20px;
       }
-  
+
       footer .left,
       footer .right {
         flex: 1;
         padding: 0 10px;
         box-sizing: border-box;
       }
-  
+
       footer .left {
         text-align: left;
       }
-  
+
       footer .right {
         text-align: right;
       }
-  
+
       footer {
         background-color: #18743d;
         color: #000;
@@ -623,13 +661,13 @@
         margin-top: 30px; /* Add spacing between content and footer */
       }
     </style>
-  
+
     <div class="end-page">
       <!-- Score Section -->
       <div class="score-container">
         Your Score: <span id="final-score">0</span>
       </div>
-  
+
       <!-- Words Panels -->
       <div class="words-panels">
         <!-- Found Words -->
@@ -639,7 +677,7 @@
             <ul id="found-words-list"></ul>
           </div>
         </div>
-  
+
         <!-- Missed Words -->
         <div class="panel" id="missed-words-panel">
           <h3>Words You Missed</h3>
@@ -648,10 +686,12 @@
           </div>
         </div>
       </div>
-  
+
       <!-- Play Again Button -->
-      <button class="play-again-button" id="play-again-button">Play Again</button>
-  
+      <button class="play-again-button" id="play-again-button">
+        Play Again
+      </button>
+
       <footer>
         <section class="footer-content">
           <p class="left">&copy; Stephen Xu. All rights reserved.</p>
@@ -660,7 +700,6 @@
       </footer>
     </div>
   </template>
-  
 
   <body>
     <div id="app"></div>
