@@ -21,6 +21,7 @@ export class GameController {
   private _gameView: GameView | null = null;
   private intervalId: number | null = null;
   private _currentPath: CellPosition[] = [];
+  private _foundWords: string[] = [];
   private isSelecting = false;
 
   constructor(model: GameModel, view: GameView) {
@@ -47,7 +48,12 @@ export class GameController {
 
     if (pathScore > 0) {
       this._gameView?.updateScore(this._gameView.getCurrentScore() + pathScore)
-      this._gameView?.addFoundWord(this._currentPath.map(pos => this._gameModel?._board[pos.row][pos.col]).join(""))
+      const wordFromPath = this._currentPath.map(pos => this._gameModel?._board[pos.row][pos.col]).join("")
+
+      if (!this._foundWords.includes(wordFromPath)) {
+        this._gameView?.addFoundWord(wordFromPath)
+        this._foundWords.push(wordFromPath)
+      }
     } 
 
     // clear the current path and highlighted cells

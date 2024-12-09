@@ -101,7 +101,7 @@ export class GameView {
 
   addFoundWord(word: string) {
     if (this._gamePage?._wordsTab) {
-      const wordElement = document.createElement("span");
+      const wordElement = document.createElement("h3");
       wordElement.classList.add("word");
       wordElement.textContent = word;
 
