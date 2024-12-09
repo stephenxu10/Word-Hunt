@@ -144,9 +144,21 @@ export class StartView {
   private _startPage: StartPage | null = null;
 
   constructor() {
-    this._startPage = document.querySelector("start-page");
-    if (!(this._startPage instanceof StartPage)) {
-      console.log("no start page found");
+    // Add in the start page!
+    const app = document.querySelector("#app");
+
+    if (app) {
+      const startPage = document.createElement("start-page") as StartPage;
+
+      // Clear the DOM
+      app.innerHTML = "";
+      app.appendChild(startPage);
+
+      this._startPage = startPage;
+    }
+
+    if (this._startPage) {
+      console.log("DOM connected to the start page.");
     }
   }
 }

@@ -4,9 +4,9 @@ export type Settings = {
 };
 
 export type CellPosition = {
-  row: number,
-  col: number
-}
+  row: number;
+  col: number;
+};
 
 export type DictionaryInfo = {
   words: Set<string>;

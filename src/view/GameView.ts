@@ -22,10 +22,10 @@ class GamePage extends HTMLElement {
         this._timeDisplay = this.shadowRoot.querySelector("#time-remaining");
 
         // The score box
-        this._scoreBox = this.shadowRoot.querySelector("#score")
+        this._scoreBox = this.shadowRoot.querySelector("#score");
 
         // The words tab
-        this._wordsTab = this.shadowRoot.querySelector("#found-words")
+        this._wordsTab = this.shadowRoot.querySelector("#found-words");
 
         // The game board
         this._gameBoard = this.shadowRoot.querySelector("#game-board");
@@ -81,8 +81,8 @@ export class GameView {
     }
   }
 
-  getBoardElement() : HTMLElement {
-      return this._gamePage!._gameBoard!
+  getBoardElement(): HTMLElement {
+    return this._gamePage!._gameBoard!;
   }
 
   updateScore(newScore: number) {
@@ -91,9 +91,9 @@ export class GameView {
     }
   }
 
-  getCurrentScore() : number {
+  getCurrentScore(): number {
     if (this._gamePage?._scoreBox) {
-      return parseInt(this._gamePage._scoreBox.textContent!)
+      return parseInt(this._gamePage._scoreBox.textContent!);
     } else {
       return 0;
     }
@@ -110,7 +110,9 @@ export class GameView {
   }
 
   highlightCell(row: number, col: number) {
-    const cell = this.getBoardElement().querySelector(`[data-row='${row}'][data-col='${col}']`);
+    const cell = this.getBoardElement().querySelector(
+      `[data-row='${row}'][data-col='${col}']`,
+    );
 
     if (cell) {
       cell.classList.add("highlighted");
@@ -118,8 +120,9 @@ export class GameView {
   }
 
   clearTemporaryHighlights() {
-    const highlightedCells = this.getBoardElement().querySelectorAll(".highlighted");
-    highlightedCells.forEach(cell => cell.classList.remove("highlighted"));
+    const highlightedCells =
+      this.getBoardElement().querySelectorAll(".highlighted");
+    highlightedCells.forEach((cell) => cell.classList.remove("highlighted"));
   }
 
   renderBoard(board: string[][]) {

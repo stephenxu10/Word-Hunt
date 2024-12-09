@@ -7,13 +7,14 @@ More to come!
 */
 import { GameModel } from "../model/GameModel";
 import { GameView } from "../view/GameView";
+import { EndView } from "../view/EndView";
 import { CellPosition } from "../types";
 
 function getCellCoordinates(cell: HTMLElement): CellPosition {
   const row = parseInt(cell.getAttribute("data-row") || "0", 10);
   const col = parseInt(cell.getAttribute("data-col") || "0", 10);
 
-  return {row, col};
+  return { row, col };
 }
 
 export class GameController {
@@ -33,7 +34,10 @@ export class GameController {
     boardElement.addEventListener("mousedown", this.handleMouseDown.bind(this));
     boardElement.addEventListener("mouseup", this.handleMouseUp.bind(this));
     boardElement.addEventListener("mousemove", this.handleMouseMove.bind(this));
-    boardElement.addEventListener("mouseleave", this.handleMouseLeave.bind(this));
+    boardElement.addEventListener(
+      "mouseleave",
+      this.handleMouseLeave.bind(this),
+    );
   }
 
   initializeGame() {
@@ -47,20 +51,22 @@ export class GameController {
     const pathScore = this._gameModel?.scorePath(this._currentPath)!;
 
     if (pathScore > 0) {
-      this._gameView?.updateScore(this._gameView.getCurrentScore() + pathScore)
-      const wordFromPath = this._currentPath.map(pos => this._gameModel?._board[pos.row][pos.col]).join("")
+      this._gameView?.updateScore(this._gameView.getCurrentScore() + pathScore);
+      const wordFromPath = this._currentPath
+        .map((pos) => this._gameModel?._board[pos.row][pos.col])
+        .join("");
 
       if (!this._foundWords.includes(wordFromPath)) {
-        this._gameView?.addFoundWord(wordFromPath)
-        this._foundWords.push(wordFromPath)
+        this._gameView?.addFoundWord(wordFromPath);
+        this._foundWords.push(wordFromPath);
       }
-    } 
+    }
 
     // clear the current path and highlighted cells
     this._currentPath = [];
     this._gameView?.clearTemporaryHighlights();
   }
-  
+
   handleMouseDown(event: MouseEvent) {
     const cell = event.target as HTMLElement;
 
@@ -76,14 +82,16 @@ export class GameController {
   handleMouseMove(event: MouseEvent) {
     // Handles mouse movement by adding traversed cells to the currentPath
     if (!this.isSelecting) {
-      return
+      return;
     }
 
     const cell = event.target as HTMLElement;
     if (cell && cell.classList.contains("cell")) {
       const cellPosition = getCellCoordinates(cell);
       const alreadyInPath = this._currentPath.some(
-        position => position.row === cellPosition.row && position.col === cellPosition.col
+        (position) =>
+          position.row === cellPosition.row &&
+          position.col === cellPosition.col,
       );
 
       if (!alreadyInPath) {
@@ -117,9 +125,7 @@ export class GameController {
       this._gameView!._gamePage!.updateTimeDisplay(this._gameModel!.getTime());
 
       if (this._gameModel!.getTime() <= 0) {
-        this.stopTimer();
-
-        // Handle game ending logic and what not
+        this.endGame();
       }
     }, 1000);
   }
@@ -128,6 +134,23 @@ export class GameController {
     if (this.intervalId !== null) {
       clearInterval(this.intervalId);
       this.intervalId = null;
+    }
+  }
+
+  endGame() {
+    // Ends the game by stopping the timer and converting to the end page
+    this.stopTimer();
+
+    // Solve the board to get all the possible words
+    const allWords = this._gameModel?.solve();
+    const endView = new EndView(
+      this._foundWords,
+      allWords!,
+      this._gameView!.getCurrentScore(),
+    );
+
+    if (endView) {
+      console.log("DOM connected to the end page.");
     }
   }
 }

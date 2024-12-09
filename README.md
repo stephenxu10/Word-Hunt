@@ -5,7 +5,9 @@ A fun passion project that recreates the iMessage GamePidgeon Word Hunt game.
 
 Install all of the required dependencies in order to build your project:
 
-```npm install```
+```bash
+npm install
+```
 
 This will automatically install all of the tools and dependencies that are needed and allowed for the project. You should only need to run npm install once each time you create a fresh clone.
 

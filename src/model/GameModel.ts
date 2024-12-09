@@ -107,8 +107,8 @@ export class GameModel {
       return 0;
     }
 
-    const word = cellPath.map(pos => this._board[pos.row][pos.col]).join("");
-    
+    const word = cellPath.map((pos) => this._board[pos.row][pos.col]).join("");
+
     if (this._trie.search(word)) {
       return 400 * (cellPath.length - 2);
     } else {

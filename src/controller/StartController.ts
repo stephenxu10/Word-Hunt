@@ -44,9 +44,6 @@ export class StartController {
             this._model._wordTrie,
             boardSize,
           );
-          console.log(gameModel._board);
-          console.log(gameModel.solve());
-
           const gameController = new GameController(gameModel, gameView);
           gameController.initializeGame();
         }
