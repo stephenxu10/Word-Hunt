@@ -2,8 +2,13 @@
 A fun passion project that recreates the iMessage GamePidgeon Word Hunt game. 
 
 ## 🛠 Getting Started
+First, clone the repository:
 
-Install all of the required dependencies in order to build your project:
+```bash
+git clone https://github.com/stephenxu10/Word-Hunt.git
+```
+
+Then, navigate to the respository, and install all of the required dependencies in order to build your project:
 
 ```bash
 npm install
