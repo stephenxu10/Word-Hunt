@@ -15,6 +15,42 @@
     />
     <script src="https://code.iconify.design/iconify-icon/1.0.6/iconify-icon.min.js"></script>
     <script defer type="module" src="../src/main.ts"></script>
+
+    <style>
+      /* Global Body Styling for Extra Pizazz */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        /* Add a subtle animated gradient background */
+        background: linear-gradient(120deg, #1e1e2f, #18743d);
+        background-size: 200% 200%;
+        animation: gradientFlow 6s infinite alternate;
+        overflow-x: hidden;
+        color: #f0f0f0;
+      }
+
+      @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+      }
+
+      /* Style the entire page footer to match the vibe */
+      footer {
+        font-size: 0.9em;
+        letter-spacing: 0.5px;
+      }
+
+      /* Add a gentle hover animation to links if needed */
+      a {
+        color: #ffdd57;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
 
   <template id="start-template">
